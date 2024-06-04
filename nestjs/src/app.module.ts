@@ -4,9 +4,16 @@ import { CreateUserUseCase } from './modules/user/useCase/createUser/create.user
 import { UserModule } from './modules/user/user.module';
 import { SeedModule } from './modules/seeds/seeds.module';
 import { PostModule } from './modules/posts/post.module';
+import { FollowerModule } from './modules/followers/follower.module';
 
 @Module({
-	imports: [UserModule, SeedModule, PostModule, MongooseModule.forRoot('mongodb://localhost:27017/casar')],
+	imports: [
+		UserModule,
+		SeedModule,
+		PostModule,
+		FollowerModule,
+		MongooseModule.forRoot('mongodb://localhost:27017/casar'),
+	],
 	controllers: [],
 	providers: [CreateUserUseCase],
 })
