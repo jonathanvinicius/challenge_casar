@@ -4,7 +4,7 @@ import { Post } from 'src/modules/posts/entities/post.entity';
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 
-@Schema({ collection: 'users' })
+@Schema({ collection: 'users', versionKey: false })
 export class User extends Document {
 	@Prop({ required: true })
 	username: string;
