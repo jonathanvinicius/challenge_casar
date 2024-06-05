@@ -47,11 +47,10 @@ export class UserRepository implements IUserRepository {
 					$lookup: {
 						from: 'followers',
 						localField: '_id',
-						foreignField: 'follower',
+						foreignField: 'following',
 						as: 'followers',
 					},
 				},
-
 				{
 					$skip: Number(skip),
 				},
