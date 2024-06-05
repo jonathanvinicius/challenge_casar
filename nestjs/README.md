@@ -20,7 +20,11 @@
    ```bash
    npm run start:dev
 
-4. Importar a collection do postman disponibilizada no diretório collection
+4. Execute as seeds para criação de usuários
+   ```bash
+   npm run seed
+
+5. Importar a collection do postman disponibilizada no diretório collection
    
    
 ## Stack Usada
