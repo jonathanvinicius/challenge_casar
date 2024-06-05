@@ -28,8 +28,56 @@ export class FollowersController {
 			},
 		},
 	})
+	@ApiResponse({
+		status: 400,
+		description: 'Bad Request',
+		content: {
+			'application/json': {
+				examples: {
+					userNotFound: {
+						summary: 'Invalid user id',
+						value: {
+							statusCode: 400,
+							message: 'Invalid user id',
+						},
+					},
+					userPassingTheirOwnId: {
+						summary: 'user passing their own id',
+						value: {
+							statusCode: 400,
+							message: 'you cant do an action for your own id',
+						},
+					},
+				},
+			},
+		},
+	})
+	@ApiResponse({
+		status: 404,
+		description: 'Not Found',
+		content: {
+			'application/json': {
+				examples: {
+					userNotFound: {
+						summary: 'User Not Found',
+						value: {
+							statusCode: 404,
+							message: 'User or follower not found',
+						},
+					},
+					followerNotFound: {
+						summary: 'Follower Not Found',
+						value: {
+							statusCode: 404,
+							message: 'follower not found',
+						},
+					},
+				},
+			},
+		},
+	})
 	async createFollower(@Param('userId') userId: string, @Param('followerId') followerId: string) {
-		return this.createFollowerUseCase.execute({ userId, following: followerId });
+		return this.createFollowerUseCase.execute({ userId, followerId });
 	}
 
 	@Delete('/:userId/:followerId')
@@ -48,6 +96,13 @@ export class FollowersController {
 							message: 'Invalid user id',
 						},
 					},
+					userPassingTheirOwnId: {
+						summary: 'user passing their own id',
+						value: {
+							statusCode: 400,
+							message: 'you cant do an action for your own id',
+						},
+					},
 				},
 			},
 		},
@@ -62,7 +117,14 @@ export class FollowersController {
 						summary: 'User Not Found',
 						value: {
 							statusCode: 404,
-							message: 'User or follower not found.',
+							message: 'User or follower not found',
+						},
+					},
+					followerNotFound: {
+						summary: 'Follower Not Found',
+						value: {
+							statusCode: 404,
+							message: 'follower not found',
 						},
 					},
 				},
