@@ -1,5 +1,5 @@
 export class GetPostDto {
-	page: any;
-	limit: any;
+	page: number;
+	limit: number;
 	id: string;
 }
