@@ -41,6 +41,30 @@ export class PostController {
 							message: 'repostComment is required for this type of post',
 						},
 					},
+					userLimitPost: {
+						summary: 'repostComment required',
+						value: {
+							statusCode: 422,
+							message: 'User has reached the limit of 5 posts for day',
+						},
+					},
+				},
+			},
+		},
+	})
+	@ApiResponse({
+		status: 422,
+		description: 'Unprocessable Entity',
+		content: {
+			'application/json': {
+				examples: {
+					userLimitPost: {
+						summary: 'user limit post',
+						value: {
+							statusCode: 422,
+							message: 'User has reached the limit of 5 posts for day',
+						},
+					},
 				},
 			},
 		},
