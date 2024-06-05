@@ -7,13 +7,7 @@ import { PostModule } from './modules/posts/post.module';
 import { FollowerModule } from './modules/followers/follower.module';
 
 @Module({
-	imports: [
-		UserModule,
-		SeedModule,
-		PostModule,
-		FollowerModule,
-		MongooseModule.forRoot('mongodb://localhost:27017/casar'),
-	],
+	imports: [UserModule, SeedModule, PostModule, FollowerModule, MongooseModule.forRoot(process.env.MONGODB_URL)],
 	controllers: [],
 	providers: [CreateUserUseCase],
 })
