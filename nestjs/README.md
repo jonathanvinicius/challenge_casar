@@ -2,7 +2,7 @@
 
 ### Pré-requisitos
 
-- Node.js/versao 20
+- Node.js/versão 20
 - Docker
 - MongoDB
 
@@ -18,14 +18,17 @@
   docker compose up -d
 
 3. Execute a aplicacao
-   ```
+   ```bash
    npm run start:dev
+
+4. Importar a collection do postman disponibilizada no diretório collection
 
 ## Stack Usada
 
 - **Backend:** Node.js, NestJS
 - **Banco de Dados:** MongoDB
-- **Testes:** Nao realizado
+- **ORM:** Mongoose
+- **Testes:** Não realizado
 
 ## Swagger
 Para acessar o swagger da aplicacao basta acessar o localhost:3000/docs
@@ -34,7 +37,7 @@ Para acessar o swagger da aplicacao basta acessar o localhost:3000/docs
 
 ### Usuários
 
-- **GET /users:** Lista todos os usuários
+- **GET /users:** Lista o usuário e suas respectivas postagens, seguidores.
 
 ### Postagens
 
@@ -45,7 +48,3 @@ Para acessar o swagger da aplicacao basta acessar o localhost:3000/docs
 
 - **POST /followers/:userId/:followerId:** Cria uma nova relação de seguidor
 
-## Páginas Críticas
-
-1. **Página Inicial:** A página inicial exibirá as postagens mais acessadas.
-2. **Página de Listagem de Usuários:** A primeira página que os usuários veem ao fazer login será uma listagem de todos os usuários.
