@@ -5,6 +5,8 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { GetPostDto } from '../dto/get.post.dto';
 import { GetPostByFollowers } from '../dto/get.post.by.followers';
+import { GetPostUserDto } from '../dto/get.post.user.dto';
+import * as moment from 'moment';
 
 export class PostRepository implements IPostRepository {
 	constructor(@InjectModel(Post.name) private readonly postRepository: Model<Post>) {}
@@ -51,7 +53,7 @@ export class PostRepository implements IPostRepository {
 					$lookup: {
 						from: 'followers',
 						localField: '_id',
-						foreignField: 'follower',
+						foreignField: 'following',
 						as: 'following',
 					},
 				},
@@ -71,5 +73,20 @@ export class PostRepository implements IPostRepository {
 			.exec();
 
 		return posts;
+	}
+
+	async getPostUser(params: GetPostUserDto) {
+		const startOfDay = moment().tz('America/Sao_Paulo').startOf('day').toDate();
+		const endOfDay = moment().tz('America/Sao_Paulo').endOf('day').toDate();
+
+		return this.postRepository
+			.countDocuments({
+				author: params.userId,
+				createdAt: {
+					$gte: startOfDay,
+					$lte: endOfDay,
+				},
+			})
+			.exec();
 	}
 }
