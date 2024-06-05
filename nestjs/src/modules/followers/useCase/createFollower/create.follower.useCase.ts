@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { CreateFollowerDto } from '../../dto/create.follower.dto';
 import { IFollowerRepository } from '../../repository/interfaces/IFollowerRepository';
+import { CreateFollowerDto } from '../../dto/create.follower.dto';
 
 @Injectable()
 export class CreateFollowerUseCase {
-	constructor(@Inject('IFollowerRepository') private readonly createFollowerRepository: IFollowerRepository) {}
+	constructor(@Inject('IFollowerRepository') private readonly followerRepository: IFollowerRepository) {}
 
 	async execute(follower: CreateFollowerDto) {
-		return this.createFollowerRepository.save(follower);
+		return this.followerRepository.save(follower);
 	}
 }
