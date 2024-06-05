@@ -2,9 +2,8 @@
 
 ### Pré-requisitos
 
-- Node.js/versão 20
+- Node.js - Versão 20
 - Docker
-- MongoDB
 
 ### Instalação
 
@@ -13,16 +12,17 @@
    git clone https://github.com/jonathanvinicius/challenge_casar
    cd nestjs
 
-2. Execute os containeres da aplicacao 
-  ```bash
-  docker compose up -d
+2. Execute o container da aplicação
+   ```bash
+   docker compose up -d
 
 3. Execute a aplicacao
    ```bash
    npm run start:dev
 
 4. Importar a collection do postman disponibilizada no diretório collection
-
+   
+   
 ## Stack Usada
 
 - **Backend:** Node.js, NestJS
@@ -37,7 +37,8 @@ Para acessar o swagger da aplicacao basta acessar o localhost:3000/docs
 
 ### Usuários
 
-- **GET /users:** Lista o usuário e suas respectivas postagens, seguidores.
+- **Post /users:** Cadastro de usuário
+- **GET /users:** Lista o usuário e suas respectivas postagens, seguidores
 
 ### Postagens
 
@@ -47,4 +48,4 @@ Para acessar o swagger da aplicacao basta acessar o localhost:3000/docs
 ### Seguidores
 
 - **POST /followers/:userId/:followerId:** Cria uma nova relação de seguidor
-
+- **DELETE /followers/:userId/:followerId:** Deletar relação de seguidor
