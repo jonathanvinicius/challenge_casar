@@ -6,7 +6,6 @@ async function bootstrap() {
 	const appContext = await NestFactory.createApplicationContext(SeedModule);
 	const usersSeeder = appContext.get(InsertBatchUsersSeeder);
 
-	await usersSeeder.drop();
 	await usersSeeder.seed();
 
 	await appContext.close();
