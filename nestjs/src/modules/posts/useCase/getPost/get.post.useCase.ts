@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { IPostRepository } from '../../repository/interfaces/IPostRepository';
 import { GetPostDto } from '../../dto/get.post.dto';
 import { IFollowerRepository } from 'src/modules/followers/repository/interfaces/IFollowerRepository';
+import * as mongoose from 'mongoose';
+import * as moment from 'moment-timezone';
 
 @Injectable()
 export class GetPostUseCase {
@@ -14,11 +16,20 @@ export class GetPostUseCase {
 		if (params.id) {
 			const followers = await this.followerRepository.get({ userId: params.id });
 
-			const followerIds = followers.map((follower) => follower.following.toString());
+			const ids = followers.map((follower) => new mongoose.Types.ObjectId(follower.following.toString()));
 
-			return await this.postRepository.getPostByFollowers({ ...params, followerIds });
+			const posts = await this.postRepository.getPostByFollowers({ ...params, followerIds: ids });
+			return posts.map((post) => ({
+				...post,
+				createdAt: moment(post.createdAt).tz('America/Sao_Paulo').format(),
+			}));
 		} else {
-			return await this.postRepository.get(params);
+			const posts = await this.postRepository.get(params);
+
+			return posts.map((post) => ({
+				...post.toObject(),
+				createdAt: moment(post.createdAt).tz('America/Sao_Paulo').format(),
+			}));
 		}
 	}
 }
