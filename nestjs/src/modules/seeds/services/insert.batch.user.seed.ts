@@ -9,7 +9,7 @@ import * as moment from 'moment';
 export class InsertBatchUsersSeeder {
 	constructor(@InjectModel(UserSeed.name) private readonly userModel: Model<UserSeed>) {}
 
-	async seed(): Promise<any> {
+	async seed() {
 		const users = DataFactory.createForClass(UserSeed).generate(10);
 
 		for (const user of users) {
@@ -19,7 +19,7 @@ export class InsertBatchUsersSeeder {
 		return this.userModel.insertMany(users);
 	}
 
-	async drop(): Promise<any> {
+	async drop() {
 		return this.userModel.deleteMany({});
 	}
 }
