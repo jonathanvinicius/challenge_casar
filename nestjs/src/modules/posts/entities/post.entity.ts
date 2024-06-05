@@ -2,7 +2,7 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { User } from 'src/modules/user/entities/user.entity';
 import * as mongoose from 'mongoose';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 export enum TypePost {
 	Repost = 'repost',
@@ -10,7 +10,7 @@ export enum TypePost {
 	RepostComment = 'repostComment',
 }
 
-@Schema({ collection: 'posts', versionKey: false, timestamps: true })
+@Schema({ collection: 'posts', versionKey: false })
 export class Post extends Document {
 	@Prop({ required: true })
 	content: string;
@@ -34,6 +34,6 @@ export class Post extends Document {
 export const PostSchema = SchemaFactory.createForClass(Post);
 
 PostSchema.pre('save', function (next) {
-	this.createdAt = moment().toDate();
+	this.createdAt = moment().tz('America/Sao_Paulo').toDate();
 	next();
 });
