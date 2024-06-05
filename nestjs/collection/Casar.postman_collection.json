@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "044f0800-7f6c-4b0f-9c31-557d5bd9699f",
+		"name": "Casar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31231789"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{$randomUserName}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/user/666064cc22222ac5c6a2dd90?limit=25&page=1",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"666064cc22222ac5c6a2dd90"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "25"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Hello Comment\",\r\n    \"type\": \"repostComment\",\r\n    \"postId\": \"665f929b8a281a9474b2d4af\",\r\n    \"repostComment\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/post/666064e122222ac5c6a2dda2",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"post",
+								"666064e122222ac5c6a2dda2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/post",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "follower",
+			"item": [
+				{
+					"name": "follower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/followers/666064e122222ac5c6a2dda2/666064cc22222ac5c6a2dd90",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"followers",
+								"666064e122222ac5c6a2dda2",
+								"666064cc22222ac5c6a2dd90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "follower",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/followers/666064e122222ac5c6a2dda2/666064cc22222ac5c6a2dd90",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"followers",
+								"666064e122222ac5c6a2dda2",
+								"666064cc22222ac5c6a2dd90"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
