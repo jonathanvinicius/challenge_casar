@@ -39,6 +39,11 @@ Esta é uma aplicação de rede social projetada para fornecer uma plataforma on
 
 10. **Esteira de CI/CD:** Configurar uma esteira de CI/CD para automatizar os processos de build, teste e implantação.
 
+## Páginas Críticas
+
+1. **Página Inicial:** A página inicial exibirá as postagens mais acessadas.
+2. **Página de Listagem de Usuário e Posts:** Aonde o usuário vai visualizar suas postagens, seguidores e pessoas que ele segue.
+
 
 
 ## Autocrítica
