@@ -25,7 +25,7 @@ export class CreatePostUseCase {
 		const postUser = await this.postRepository.getPostUser({ userId: post.author });
 
 		if (postUser >= 5) {
-			throw new HttpException('User has reached the limit of 5 posts for day.', HttpStatus.UNPROCESSABLE_ENTITY);
+			throw new HttpException('User has reached the limit of 5 posts for day', HttpStatus.UNPROCESSABLE_ENTITY);
 		}
 
 		return await this.postRepository.save(post);
